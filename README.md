@@ -12,8 +12,8 @@ graph TD
     Client(["👤 Client"])
 
     subgraph Spring Boot Application
-        PC["PortfolioController\n─────────────────\nPOST /portfolio/ask"]
-        PS["PortfolioService\n─────────────────\naskQuestion()"]
+        PC["PortfolioController─────────────────POST /portfolio/ask"]
+        PS["PortfolioService─────────────────askQuestion()"]
         TS["ToolsService\n─────────────────\ngetPortfoliosForCustomer()\ngetStockDetails()"]
         PR["PortfolioRepository\n─────────────────\nfindByCustomerId()\nfindByStockSymbol()\nfindByCustomerName()"]
     end
