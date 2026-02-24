@@ -143,9 +143,9 @@ flowchart LR
     end
 
     subgraph Processing
-        LLM["GPT-4o\nLLM"]
-        T1["Tool:\nget_customer_stocks"]
-        T2["Tool:\nget_stock_details"]
+        LLM["GPT-4o LLM"]
+        T1["Tool:get_customer_stocks"]
+        T2["Tool:get_stock_details"]
     end
 
     subgraph Data Sources
