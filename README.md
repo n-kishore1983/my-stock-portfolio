@@ -5,6 +5,41 @@ It integrates with OpenAI's GPT-4o model to provide intelligent analysis and rec
 The application fetches real-time stock price data from the API Ninjas stock price API and stores portfolio information in an H2 in-memory database.
 Built on Spring Boot 3.5.11 with Spring AI, it follows a clean layered architecture with a REST API, service layer, and repository pattern.
 
+## Data Flow
+
+```mermaid
+flowchart LR
+    subgraph Input
+        Q["User Question"]
+    end
+
+    subgraph Processing
+        LLM["GPT-4o\nLLM"]
+        T1["Tool:\nget_customer_stocks"]
+        T2["Tool:\nget_stock_details"]
+    end
+
+    subgraph Data Sources
+        DB[("H2 DB")]
+        EXT["API Ninjas"]
+    end
+
+    subgraph Output
+        R["AI Response\n& Recommendations"]
+    end
+
+    Q --> LLM
+    LLM --> T1
+    LLM --> T2
+    T1 --> DB
+    T2 --> EXT
+    DB --> LLM
+    EXT --> LLM
+    LLM --> R
+```
+
+---
+
 ## System Architecture
 
 ```mermaid
@@ -132,38 +167,4 @@ erDiagram
     }
 ```
 
----
-
-## Data Flow
-
-```mermaid
-flowchart LR
-    subgraph Input
-        Q["User Question"]
-    end
-
-    subgraph Processing
-        LLM["GPT-4o LLM"]
-        T1["Tool:get_customer_stocks"]
-        T2["Tool:get_stock_details"]
-    end
-
-    subgraph Data Sources
-        DB[("H2 DB")]
-        EXT["API Ninjas"]
-    end
-
-    subgraph Output
-        R["AI Response\n& Recommendations"]
-    end
-
-    Q --> LLM
-    LLM --> T1
-    LLM --> T2
-    T1 --> DB
-    T2 --> EXT
-    DB --> LLM
-    EXT --> LLM
-    LLM --> R
-```
 
