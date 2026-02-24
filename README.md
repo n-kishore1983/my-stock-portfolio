@@ -15,11 +15,11 @@ graph TD
         PC["PortfolioController─────────────────POST /portfolio/ask"]
         PS["PortfolioService─────────────────askQuestion()"]
         TS["ToolsService─────────────────getPortfoliosForCustomer()\ngetStockDetails()"]
-        PR["PortfolioRepository─────────────────findByCustomerId()\nfindByStockSymbol()\nfindByCustomerName()"]
+        PR["PortfolioRepository─────────────────findByCustomerId()\nfindByStockSymbol()findByCustomerName()"]
     end
 
     subgraph Database
-        H2[("H2 In-Memory DB─────────────────PORTFOLIO Table\nPK: customer_id + stock_symbol")]
+        H2[("H2 In-Memory DB─────────────────PORTFOLIO TablePK: customer_id + stock_symbol")]
     end
 
     subgraph External Services
