@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: my-stock-portfolio
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY }
+      chat:
+        options:
+          model: gpt-4o
+          temperature: 0.7
+          max-tokens: 1000
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: false
+
+logging:
+  level:
+    org.springframework.jdbc.datasource.init: DEBUG
+    org.hibernate.SQL: DEBUG
+
+tickr:
+  api:
+    url: https://api.api-ninjas.com/v1
+    key: ${TICKR_API_KEY}
