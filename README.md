@@ -14,17 +14,17 @@ graph TD
     subgraph Spring Boot Application
         PC["PortfolioController─────────────────POST /portfolio/ask"]
         PS["PortfolioService─────────────────askQuestion()"]
-        TS["ToolsService\n─────────────────\ngetPortfoliosForCustomer()\ngetStockDetails()"]
-        PR["PortfolioRepository\n─────────────────\nfindByCustomerId()\nfindByStockSymbol()\nfindByCustomerName()"]
+        TS["ToolsService─────────────────getPortfoliosForCustomer()\ngetStockDetails()"]
+        PR["PortfolioRepository─────────────────findByCustomerId()\nfindByStockSymbol()\nfindByCustomerName()"]
     end
 
     subgraph Database
-        H2[("H2 In-Memory DB\n─────────────────\nPORTFOLIO Table\nPK: customer_id + stock_symbol")]
+        H2[("H2 In-Memory DB─────────────────PORTFOLIO Table\nPK: customer_id + stock_symbol")]
     end
 
     subgraph External Services
-        OAI["☁️ OpenAI API\n─────────────────\nGPT-4o Model"]
-        AN["☁️ API Ninjas\n─────────────────\n/v1/stockprice"]
+        OAI["☁️ OpenAI API─────────────────GPT-4o Model"]
+        AN["☁️ API Ninjas─────────────────/v1/stockprice"]
     end
 
     Client -->|"POST /portfolio/ask"| PC
